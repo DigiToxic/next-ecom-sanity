@@ -57,7 +57,7 @@ export default async function Project({ params }: Props) {
 
       <hr />
       <div className="suggested-products">
-        <p className="suggested-title">We Think You'd Also Like...</p>
+        <p className="suggested-title">We Think You&apos;d Also Like...</p>
         <div className="suggested-products-display">
           {nextThreeProjects.map((project) => (
             <Link
