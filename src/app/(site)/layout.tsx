@@ -72,7 +72,7 @@ export default function RootLayout({
                   />
                   <button type="submit">Subscribe</button>
                 </p>
-              
+           
               <div className="supports-container">
                 <ul className="supports">
                   <li>Help Center</li>

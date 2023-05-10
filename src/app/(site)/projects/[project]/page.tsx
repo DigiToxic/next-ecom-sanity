@@ -14,7 +14,6 @@ type Props = {
 };
 
 const Project = async ({ params }: Props) => {
-  const [quantity, setQuantity] = useState<number>(1);
   const { addToCart } = useCart();
 
   const slug = params.project;
@@ -41,10 +40,11 @@ const Project = async ({ params }: Props) => {
           <p>Quantity : 1</p>
 
           <button
+            className="hover-bottom"
             onClick={() =>
               addToCart({
                 ...project,
-                quantity,
+                quantity: 1,
               })
             }
           >
@@ -86,6 +86,7 @@ const Project = async ({ params }: Props) => {
                 </div>
                 <div className="product-btns">
                   <button
+                    className="hover-bottom"
                     onClick={() =>
                       addToCart({
                         ...project,
