@@ -7,9 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { Project } from "@/types/Project";
 import useCart from "../useCart";
+import { ProjectWithQuantity } from "../CartContext";
 
 interface HomeProps {
-  addToCart?: (item: any) => void;
+  addToCart?: (item: ProjectWithQuantity) => void;
 }
 
 const Home: React.FC<HomeProps> = () => {
