@@ -13,7 +13,7 @@ const project = {
       options: {
         list: [
           { title: "Paints", value: "Paints" },
-          { title: "Figurine", value: "Figurine" },
+          { title: "Figurines", value: "Figurines" },
         ],
       },
     },

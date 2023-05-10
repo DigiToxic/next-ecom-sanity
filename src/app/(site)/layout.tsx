@@ -24,7 +24,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="en">
       <body>
@@ -61,7 +60,25 @@ export default function RootLayout({
 
           <footer>
             <div className="Footer">
-
+              <form
+                className="Ecom-Email-Form"
+                name="Ecom-Email-Form"
+                method="POST"
+                data-netlify="true"
+                onSubmit="submit"
+              >
+                <p className="form-phrase">Subscribe For Our Latest Deals</p>
+                <p className="actual-form">
+                  <input
+                    id="email-box"
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                  />
+                  <button type="submit">Subscribe</button>
+                </p>
+              </form>
               <div className="supports-container">
                 <ul className="supports">
                   <li>Help Center</li>

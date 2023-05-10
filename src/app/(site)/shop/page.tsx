@@ -7,11 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { Project } from "@/types/Project";
 import useCart from "../useCart";
-import { ProjectWithQuantity } from "../CartContext";
-
-interface HomeProps {
-  addToCart?: (item: ProjectWithQuantity) => void;
-}
 
 const Home: React.FC = () => {
   const [allProjects, setAllProjects] = useState<Project[]>([]);
@@ -35,7 +30,7 @@ const Home: React.FC = () => {
       case "Newest":
         sortedProjects = [...projects].sort(
           (a, b) =>
-            new Date(b._createAt).getTime() - new Date(a._createAt).getTime()
+            new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime()
         );
         break;
       default:
