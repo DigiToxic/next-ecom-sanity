@@ -1,15 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import { getProject, getRelatedProjects } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import TabsComponent from "../../TabsComponent";
+import useCart from "../../useCart";
 
 type Props = {
   params: { project: string };
 };
 
-export default async function Project({ params }: Props) {
+const Project = async ({ params }: Props) => {
+  const [quantity, setQuantity] = useState<number>(1);
+  const { addToCart } = useCart();
+
   const slug = params.project;
   const project = await getProject(slug);
   const relatedProjects = await getRelatedProjects(slug);
@@ -31,16 +38,16 @@ export default async function Project({ params }: Props) {
         <div className="purchase-info">
           <p className="product-name">{project.name}</p>
           <p>{project.price}</p>
-          <label>
-            Quantity
-            <select>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-          </label>
-          <button>
+          <p>Quantity : 1</p>
+
+          <button
+            onClick={() =>
+              addToCart({
+                ...project,
+                quantity,
+              })
+            }
+          >
             Add to Cart <i className="fa-solid fa-cart-plus"></i>
           </button>
           <div className="key-features">
@@ -60,28 +67,37 @@ export default async function Project({ params }: Props) {
         <p className="suggested-title">We Think You&apos;d Also Like...</p>
         <div className="suggested-products-display">
           {nextThreeProjects.map((project) => (
-            <Link
-              href={`/projects/${project.slug}`}
-              className="w-1/4 mb-10"
-              key={project._id}
-            >
-              <img
-                className="product-img cursor-pointer"
-                src={project.image}
-                alt="image"
-              />
+            <div className="w-1/4 mb-10" key={project._id}>
+              <Link
+                href={`/projects/${project.slug}`}
+                className="w-1/4 mb-10"
+                key={project._id}
+              >
+                <img
+                  className="product-img cursor-pointer"
+                  src={project.image}
+                  alt="image"
+                />
+              </Link>
               <div className="mt-4 product-words">
                 <div>
                   <p>{project.name}</p>
                   <p>{project.price}</p>
                 </div>
                 <div className="product-btns">
-                  <button>
+                  <button
+                    onClick={() =>
+                      addToCart({
+                        ...project,
+                        quantity: 1,
+                      })
+                    }
+                  >
                     Add to Cart <FontAwesomeIcon icon={faCartPlus} />
                   </button>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
@@ -97,4 +113,6 @@ export default async function Project({ params }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export default Project;

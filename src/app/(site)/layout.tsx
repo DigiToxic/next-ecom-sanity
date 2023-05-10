@@ -25,9 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <CartProvider>
+    <CartProvider>
+      <html lang="en">
+        <body>
           <header>
             <nav className="header-nav">
               <Link href="/">
@@ -60,6 +60,7 @@ export default function RootLayout({
 
           <footer>
             <div className="Footer">
+
                 <p className="form-phrase">Subscribe For Our Latest Deals</p>
                 <p className="actual-form">
                   <input
@@ -71,7 +72,7 @@ export default function RootLayout({
                   />
                   <button type="submit">Subscribe</button>
                 </p>
-           
+              
               <div className="supports-container">
                 <ul className="supports">
                   <li>Help Center</li>
@@ -110,8 +111,8 @@ export default function RootLayout({
               </div>
             </div>
           </footer>
-        </CartProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </CartProvider>
   );
 }
