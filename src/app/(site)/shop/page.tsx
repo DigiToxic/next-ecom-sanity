@@ -13,7 +13,7 @@ interface HomeProps {
   addToCart?: (item: ProjectWithQuantity) => void;
 }
 
-const Home: React.FC<HomeProps> = () => {
+const Home: React.FC = () => {
   const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
