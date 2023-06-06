@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { getProject, getRelatedProjects } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +15,7 @@ type Props = {
 const Project = async ({ params }: Props) => {
   const { addToCart } = useCart();
 
-  const slug = params.project;
+  const slug = await params.project;
   const project = await getProject(slug);
   const relatedProjects = await getRelatedProjects(slug);
   const randomIndex = Math.floor(Math.random() * (relatedProjects.length - 2));
@@ -41,12 +40,13 @@ const Project = async ({ params }: Props) => {
 
           <button
             className="hover-bottom"
-            onClick={() =>
+            onClick={() => {
+              console.log("Project to add to cart: ", project);
               addToCart({
                 ...project,
                 quantity: 1,
-              })
-            }
+              });
+            }}
           >
             Add to Cart <i className="fa-solid fa-cart-plus"></i>
           </button>

@@ -42,9 +42,7 @@ export default function RootLayout({
                   <Link href="/shop">Shop</Link>
                 </li>
                 <li>
-                  <Link href="/SignIn">
-                    <FontAwesomeIcon icon={faUser} />
-                  </Link>
+                  <FontAwesomeIcon icon={faUser} />
                 </li>
                 <li>
                   <SearchInput />
@@ -60,7 +58,13 @@ export default function RootLayout({
 
           <footer>
             <div className="Footer">
-
+              <form
+                className="Ecom-Email-Form"
+                name="Ecom-Email-Form"
+                method="POST"
+                data-netlify="true"
+                onSubmit="submit"
+              >
                 <p className="form-phrase">Subscribe For Our Latest Deals</p>
                 <p className="actual-form">
                   <input
@@ -72,7 +76,7 @@ export default function RootLayout({
                   />
                   <button type="submit">Subscribe</button>
                 </p>
-           
+              </form>
               <div className="supports-container">
                 <ul className="supports">
                   <li>Help Center</li>

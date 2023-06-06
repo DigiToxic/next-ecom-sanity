@@ -23,6 +23,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, [cartItems]);
 
   const addToCart = (item: ProjectWithQuantity) => {
+    console.log('Adding to cart: ', item);
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((i) => i._id === item._id);
 
