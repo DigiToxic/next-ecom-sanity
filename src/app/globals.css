@@ -379,11 +379,6 @@ button {
 
 .product-words p {
   color: black;
-  font-size: var(--fs-s);
-}
-
-.product-words p:nth-child(2) {
-  font-size: var(--fs-xs);
 }
 
 .product-btns {
@@ -593,7 +588,7 @@ button {
 .pop-up-paras-container p {
   font-size: var(--fs-xs);
   line-height: 150%;
-  padding: 2vw;
+  padding: 10px 20px;
   column-count: 2;
 }
 

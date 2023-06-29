@@ -26,15 +26,28 @@ const Project = async ({ params }: Props) => {
       <div className="product-display">
         <div className="product-imgs">
           <div className="product-pic-slider">
-            <img className="slider-img" src={project.image} alt="image" />
+            {project.images && project.images[0] && (
+              <img
+                className="slider-img"
+                src={project.images[0].url}
+                alt={project.images[0].alt}
+              />
+            )}
           </div>
           <div className="photo-grid">
-            <img className="grid-img" src={project.image} alt="image" />
-            <img className="grid-img" src={project.image} alt="image" />
+            {project.images &&
+              project.images.map((image, index) => (
+                <img
+                  className="grid-img cursor-pointer"
+                  key={index}
+                  src={image.url}
+                  alt={image.alt}
+                />
+              ))}
           </div>
         </div>
         <div className="purchase-info">
-          <p className="product-name">{project.name}</p>
+          <p className="product-name ">{project.name}</p>
           <p>{project.price}</p>
           <p>Quantity : 1</p>
 
@@ -57,7 +70,6 @@ const Project = async ({ params }: Props) => {
                 <PortableText value={project.content} />
               </li>
             </ul>
-            <p>Find out more</p>
           </div>
         </div>
       </div>
@@ -73,11 +85,13 @@ const Project = async ({ params }: Props) => {
                 className="w-1/4 mb-10"
                 key={project._id}
               >
-                <img
-                  className="product-img cursor-pointer"
-                  src={project.image}
-                  alt="image"
-                />
+                {project.images && project.images[0] && (
+                  <img
+                    className="product-img cursor-pointer"
+                    src={project.images[0].url}
+                    alt={project.images[0].alt}
+                  />
+                )}
               </Link>
               <div className="mt-4 product-words">
                 <div>
@@ -102,6 +116,7 @@ const Project = async ({ params }: Props) => {
           ))}
         </div>
       </div>
+
       <hr />
       <div className="extra-info">
         <div className="pop-up-tabs-container">

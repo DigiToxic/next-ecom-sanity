@@ -56,12 +56,14 @@ function MobileNav({ open, setOpen }: MobileNavProps) {
               </button>
               <img
                 className="product-img-cart"
-                src={item.image}
+                src={item.images && item.images[0] ? item.images[0].url : ""}
                 alt={item.name}
               />
-              <div className="flex justify-evenly w-full mt-2">
+              <div className="flex justify-evenly w-5/6 mt-2">
+                <div className="w-[60%]">
                 <p>{item.name}</p>
-                <p>Price: {item.price}</p>
+                </div>
+                <p>{item.price}</p>
               </div>
               <div className="flex justify-around items-center w-1/2">
                 <button

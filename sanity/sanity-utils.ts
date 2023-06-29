@@ -9,7 +9,7 @@ export async function getProjects(): Promise<Project[]> {
       _createdAt,
       name,
       "slug": slug.current,
-      "image": image.asset->url,
+      "images": images[].asset->{url, metadata { alt }}, // updated line
       url,
       content,
       price,
@@ -29,7 +29,7 @@ export async function getProject(slug: string): Promise<Project> {
       _createdAt,
       name,
       "slug": slug.current,
-      "image": image.asset->url,
+      "images": images[].asset->{url, metadata { alt }}, // updated line
       url,
       content,
       price,
@@ -52,7 +52,7 @@ export async function getRelatedProjects(
       _createdAt,
       name,
       "slug": slug.current,
-      "image": image.asset->url,
+      "images": images[].asset->{url, metadata { alt }}, // updated line
       url,
       content,
       price,

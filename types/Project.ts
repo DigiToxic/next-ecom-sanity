@@ -9,7 +9,7 @@ export type Project = {
 
   slug: string;
 
-  image: string;
+  images: { url: string; alt: string }[];
 
   url: string;
 
