@@ -18,7 +18,6 @@ const Project = async ({ params }: Props) => {
 
   const router = useRouter();
   const slug = router.query.project as string;
-  if (!slug) return null;
   const project = await getProject(slug);
   const relatedProjects = await getRelatedProjects(slug);
   const randomIndex = Math.floor(Math.random() * (relatedProjects.length - 2));
